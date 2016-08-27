@@ -75,12 +75,22 @@ for k=1:num_P-1
     
   end
 end
+fig = figure;
+if sum_P>1500 || sum_Q>1500
+  fig.Position = [1 1 sum_P/4 sum_Q/4];
+elseif sum_P>750 || sum_Q>750
+  fig.Position = [1 1 sum_P/2 sum_Q/2];
+else
+  fig.Position = [1 1 sum_P sum_Q];
+end
 
 imagesc(A);            %# Create a colored plot of the matrix values
 colormap(flipud(gray));  %# Change the colormap to gray (so higher values are
                          %#   black and lower values are white)
-set(gca, 'Ydir', 'reverse') %# Reverse the y-axis (Optional step)
-%set(gca, 'YAxisLocation', 'Right')
+set(gca,'Ydir','Normal') %# Reverse the y-axis (Optional step)
+title('Free Space Diagram between P and Q');
+xlabel('Parameter space of P') % x-axis label
+ylabel('Parameter space of Q') % y-axis label
 %set(gca,'YTickLabel',{'7' '6' '5' '4' '3' '2' '1' '0'})
 %set(gca,'XTickLabel',{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'})
 end
